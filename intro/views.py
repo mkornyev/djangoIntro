@@ -9,7 +9,7 @@ def home_page(request):
     #                   available to the view.
     return render(request, 'intro/index.html', {})
 
-def hello_world_no_template(request):
+def hello_world(request):
     # Just return an HttpResponse object with the HTML we want to send
     html="""
         <!DOCTYPE HTML>
@@ -19,14 +19,14 @@ def hello_world_no_template(request):
               <title>Hello World</title>
           </head>
           <body>
-              <h1>Hello, World!</h1>
+              <h1>Hello World!</h1>
           </body>
         </html>
     """
     return HttpResponse(html)
 
 
-def hello_world(request):
+def hello_world_with_template(request):
     # render takes: (1) the request,
     #               (2) the name of the view to generate, and
     #               (3) a dictionary of name-value pairs of data to be
@@ -35,12 +35,13 @@ def hello_world(request):
 
 
 # The action for the 'intro/hello.html' route.
-def hello(request):
-    # Retrieves the name from the request if the 'name' parameter is present.
-    name_to_greet = ''
-    if 'name' in request.GET:
-        name_to_greet = request.GET['name']
+def greet(request):
+    # Creates a context dictionary (map) to send data to the templated HTML file
+    context = {}
 
-    # Makes the data available to the view as 'person_name', then renders the view
-    context = {'person_name':name_to_greet}
+    # Retrieve the 'name' parameter, if present, and add it to the context
+    if 'name' in request.GET:
+        context['person_name'] = request.GET['name']
+
+    # Pass the context to the templated HTML file (aka the "view")
     return render(request, 'intro/greet.html', context)

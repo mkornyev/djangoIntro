@@ -11,10 +11,10 @@
     <h1>Hello, {{person_name}}!</h1>
 {% endif %}
 
-<form action="hello.html" method="get">
-    Enter a name: <input type="text" name="name">
-                  <input type="submit">
-    {% csrf_token %}
+<form action="greet" method="GET">
+    Enter a name:
+    <input type="text" name="name">
+    <input type="submit">
 </form>
 
 </body>
