@@ -1,6 +1,7 @@
-from django.http import HttpResponse
 from django.shortcuts import render
+from django.http import HttpResponse
 
+# Create your views here.
 
 def home_page(request):
     # render takes: (1) the request,
@@ -11,16 +12,16 @@ def home_page(request):
 
 def hello_world(request):
     # Just return an HttpResponse object with the HTML we want to send
-    html="""
+    html = """
         <!DOCTYPE HTML>
         <html>
-          <head>
-              <meta charset="utf-8">
-              <title>Hello World</title>
-          </head>
-          <body>
-              <h1>Hello World!</h1>
-          </body>
+            <head>
+                <meta charset="utf-8">
+                <title>Hello World</title>
+            </head>
+            <body>
+                <h1>Hello World!</h1>
+            </body>
         </html>
     """
     return HttpResponse(html)

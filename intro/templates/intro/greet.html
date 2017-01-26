@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Hello</title>
+    <link rel="stylesheet" href="static/intro/example.css">
 </head>
 
 <body>
@@ -12,8 +13,8 @@
 {% endif %}
 
 <form action="greet" method="GET">
-    Enter a name:
-    <input type="text" name="name">
+    <label>Enter a name:</label>
+    <input type="text" name="name" autofocus>
     <input type="submit">
 </form>
 
