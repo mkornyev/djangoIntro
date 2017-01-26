@@ -7,4 +7,4 @@ To run it, use the following command:
 
    python manage.py runserver
 
-Then, in your browser, visit http://localhost:8000/intro to run the examples.
+Then, in your browser, visit http://localhost:8000 to run the examples.
