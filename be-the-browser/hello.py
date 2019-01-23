@@ -2,7 +2,7 @@ from socket import socket
 
 s = socket()
 s.connect(('localhost', 8000))
-s.send("""GET /greet?name=Farnam HTTP/1.1
+s.send("""GET /greet-get?name=Farnam HTTP/1.1
 Host: localhost:8000
 
 """)
