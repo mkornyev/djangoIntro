@@ -35,9 +35,9 @@ def hello_world_with_template(request):
     return render(request, 'intro/hello-world.html', {})
 
 
-# The action for the 'intro/hello.html' route.
-def greet(request):
-    # Creates a context dictionary (map) to send data to the templated HTML file
+# The action for the 'greet_get' path.
+def greet_get(request):
+    # Create a context dictionary (map) to send data to the templated HTML file
     context = {}
 
     # Retrieve the 'name' parameter, if present, and add it to the context
@@ -46,3 +46,21 @@ def greet(request):
 
     # Pass the context to the templated HTML file (aka the "view")
     return render(request, 'intro/greet.html', context)
+
+
+# The action for the 'greet_get' path.
+def greet_post(request):
+    if request.method == 'GET':
+        return render(request, 'intro/greet-post-form.html')
+
+    # Creates a context dictionary (map) to send data to the templated HTML file
+    context = {}
+
+    # If 'name' parameter is present, add it to context, render templated HTML file
+    if 'name' in request.POST:
+        context['person_name'] = request.POST['name']
+        return render(request, 'intro/greet-post-hello.html', context)
+
+    # The 'name' parameter is not present.  Display error message (using template)
+    context['message'] = 'Parameter "name" was not sent in the POST request'
+    return render(request, 'intro/greet-post-message.html', context)

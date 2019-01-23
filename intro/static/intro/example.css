@@ -10,3 +10,8 @@ a:hover {
 label, input {
     font-size: xx-large;
 }
+
+.error {
+    font-size: x-large;
+    color: red;
+}

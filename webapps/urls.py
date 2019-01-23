@@ -20,5 +20,6 @@ urlpatterns = [
     path('', views.home_page),
     path('hello-world', views.hello_world),
     path('hello-world-with-template', views.hello_world_with_template),
-    path('greet', views.greet),
+    path('greet-get', views.greet_get),
+    path('greet-post', views.greet_post),
 ]

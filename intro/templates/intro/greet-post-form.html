@@ -8,22 +8,16 @@
 
 <body>
 
-{% if person_name %}
-
-    <h2>Hello, {{person_name}}!</h2>
-
-{% else %}
-
-    <form action="greet-get" method="GET">
+    <form action="greet-post" method="POST">
         <label>Enter a name:</label>
         <input type="text" name="name" autofocus>
         <input type="submit">
+        {% csrf_token %}
     </form>
 
-{% endif %}
 
-<hr>
-<a href="/">Home</a>
+    <hr>
+    <a href="/">Home</a>
 
 </body>
 </html>
