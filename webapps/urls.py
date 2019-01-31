@@ -22,4 +22,5 @@ urlpatterns = [
     path('hello-world-with-template', views.hello_world_with_template),
     path('greet-get', views.greet_get),
     path('greet-post', views.greet_post),
+    path('show', views.show),
 ]

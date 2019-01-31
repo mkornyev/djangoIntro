@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -64,3 +65,30 @@ def greet_post(request):
     # The 'name' parameter is not present.  Display error message (using template)
     context['message'] = 'Parameter "name" was not sent in the POST request'
     return render(request, 'intro/greet-post-message.html', context)
+
+
+# Action function to display some interesting information in a request
+@csrf_exempt
+def show(request):
+
+    context = {
+        'method':  request.method,
+        'scheme':  request.scheme,
+        'cookies': request.COOKIES,
+        'meta':    request.META,
+    }
+
+    header_names = ('HTTP_HOST', 'REMOTE_ADDR','HTTP_REFERER',
+                    'CONTENT_TYPE', 'CONTENT_LENGTH', 'QUERY_STRING')
+
+    interesting_data = {}
+    for key in header_names:
+        if key in request.META:
+            interesting_data[key] = request.META[key]
+        else:
+            interesting_data[key] = ''
+
+    context['interesting'] = interesting_data
+
+    return render(request, 'intro/show.html', context)
+
