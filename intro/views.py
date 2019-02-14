@@ -70,12 +70,12 @@ def greet_post(request):
 # Action function to display some interesting information in a request
 @csrf_exempt
 def show(request):
-
     context = {
         'method':  request.method,
         'scheme':  request.scheme,
         'cookies': request.COOKIES,
         'meta':    request.META,
+        'body':    str(request.body)[2:-1],
     }
 
     header_names = ('HTTP_HOST', 'REMOTE_ADDR','HTTP_REFERER',

@@ -18,3 +18,7 @@ td {
 .highlight {
     background-color: pink;
 }
+
+tt {
+    font-size: x-large;
+}

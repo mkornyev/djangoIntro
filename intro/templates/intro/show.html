@@ -32,6 +32,13 @@
     </table> 
 </div>
 
+{% if body %}
+    <div>
+        <h2>Payload</h2>
+        <tt>{{body}}</tt>
+    </div>
+{% endif %}
+
 <div>
     <h2>Cookies</h2>
     <table>
