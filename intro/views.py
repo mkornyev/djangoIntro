@@ -42,8 +42,8 @@ def greet_get(request):
     context = {}
 
     # Retrieve the 'name' parameter, if present, and add it to the context
-    if 'name' in request.GET:
-        context['person_name'] = request.GET['name']
+    if 'firstname' in request.GET:
+        context['person_name'] = request.GET['firstname']
 
     # Pass the context to the templated HTML file (aka the "view")
     return render(request, 'intro/greet.html', context)
@@ -57,14 +57,14 @@ def greet_post(request):
     # Creates a context dictionary (map) to send data to the templated HTML file
     context = {}
 
-    # If 'name' parameter is present, add it to context, render templated HTML file
-    if 'name' in request.POST:
-        context['person_name'] = request.POST['name']
-        return render(request, 'intro/greet-post-hello.html', context)
+    # The 'name' parameter is not present.  Display error message (using a template)
+    if not 'firstname' in request.POST:
+        context['message'] = 'Parameter "firstname" was not sent in the POST request'
+        return render(request, 'intro/greet-post-message.html', context)
 
-    # The 'name' parameter is not present.  Display error message (using template)
-    context['message'] = 'Parameter "name" was not sent in the POST request'
-    return render(request, 'intro/greet-post-message.html', context)
+    # The 'name' parameter is present so add it to context and render templated HTML file
+    context['person_name'] = request.POST['firstname']
+    return render(request, 'intro/greet-post-hello.html', context)
 
 
 # Action function to display some interesting information in a request
