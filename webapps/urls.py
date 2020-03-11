@@ -23,4 +23,7 @@ urlpatterns = [
     path('greet-get', views.greet_get),
     path('greet-post', views.greet_post),
     path('show', views.show),
+
+    # Below is an extra mapping to make the index work with the merged-examples
+    path('intro', views.home_page),
 ]
