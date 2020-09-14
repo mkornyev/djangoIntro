@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Greetings</title>
+    <link rel="stylesheet" href="/static/intro/example.css">
+</head>
+
+<body>
+
+    <form action="quiz" method="POST">
+        <label>Enter a name:</label>
+        <input type="text" name="firstname" autofocus>
+        <input type="submit">
+        {% csrf_token %}
+    </form>
+
+    <hr>
+    <a href="intro">Index</a>
+
+</body>
+</html>

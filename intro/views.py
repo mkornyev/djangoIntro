@@ -92,3 +92,11 @@ def show(request):
 
     return render(request, 'intro/show.html', context)
 
+
+# Code for the quiz
+def broken_greet(request):
+    if request.method == 'GET':
+        return render(request, 'intro/quiz-post-form.html')
+
+    context = { 'person_name': request.POST['firstname'] }
+    return render(request, 'intro/quiz-post-hello.html', context)
